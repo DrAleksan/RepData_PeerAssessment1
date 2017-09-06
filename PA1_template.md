@@ -48,8 +48,8 @@ head(steps_per_day)
 ```
 
 ```r
-g <- ggplot(data = na.omit(data), aes(x = date, y = steps))
-g + geom_bar(stat = "identity") 
+g <- ggplot(data = steps_per_day, aes(x = steps))
+g + geom_histogram(bins = 15) 
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
@@ -150,8 +150,8 @@ steps_per_day_f <- filled_data %>%
                    group_by(date) %>%
                    summarise(steps = sum(steps))
 
-g <- ggplot(data = filled_data, aes(x = date, y = steps))
-g + geom_bar(stat = "identity") ### !!! Bar not hist
+g <- ggplot(data = steps_per_day_f, aes(x = steps))
+g + geom_histogram(bins = 15) 
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
@@ -177,7 +177,7 @@ median(steps_per_day_f$steps)
 ```
 
 ```r
-#### The result is't differ much from data with NA's. Histobram is the same, but has more obervations
+#### The result is't differ much from data with NA's. Histobram is the same, but has more obervations. Also less 0 because NA was filled
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
